@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block musicactive %} active
+{% endblock musicactive %}
+{% block title %}
+Music
+{% endblock title %}
+
+{% block body %}
+    <div class="container my-5">
+        <div class="mx-3"><br></div>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">size</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for file in music %}
+                  <tr>
+                    <th scope="row">
+                        <a href="javascript:openFile('{{file.actual_file}}','{{file.typeOfFile}}')">{{file.name}}</a> (/../{{file.parent.name}})
+                      </th>
+                      
+                      <td>{{file.size}}</td>
+                      <td><div class="nav-item dropdown float-right">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="/{{file.actual_file}}" download="{{file.name}}">Download</a>
+                          <a class="dropdown-item" href="javascript:renameFile({{file.id}},'{{file.name}}');">Rename</a>
+                          <div class="dropdown-divider"></div>
+                          <a class="dropdown-item" href="javascript:deleteFile({{file.id}});">Delete</a>
+                        </div>
+                      </div></td>
+                  </tr>    
+                {% endfor %}
+              
+            </tbody>
+          </table>
+    </div>
+{% endblock body %}
+
+{% block js %}
+<script type='text/javascript' src="static/js/directory.js"></script>
+{% endblock js %}
