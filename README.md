@@ -1,4 +1,4 @@
-To the old CPU at my house created this application.
+To utilize the old CPU at my house created this application.
 It has heirarchichal directory system
   add
   delete
